@@ -100,10 +100,14 @@ body {
 .experiment-image {
     text-align: center;
     margin: 20px 0;
+    display: flex;
+    justify-content: center;
 }
 
 .experiment-image img {
     max-width: 80%;
+    width: 400px;
+    /* HTML側の指定を補助 */
     height: auto;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -111,7 +115,10 @@ body {
 
 .notice {
     background: #f5f5f5;
-    border-left: 4px solid #999;
+    border: 1px solid #ddd;
+    /* 完全に囲む枠線に変更 */
+    /* border-left: 4px solid #999; */
+    /* 左の線はやめる */
     padding: 16px;
     margin: 20px 0;
     border-radius: 4px;
@@ -130,7 +137,10 @@ body {
 
 .researcher-info {
     background: #f5f5f5;
-    border-left: 4px solid #999;
+    border: 1px solid #ddd;
+    /* 完全に囲む枠線に変更 */
+    /* border-left: 4px solid #999; */
+    /* 左の線はやめる */
     padding: 16px;
     margin-top: 20px;
     border-radius: 4px;
