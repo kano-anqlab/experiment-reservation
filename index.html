@@ -50,18 +50,23 @@
             </div>
 
             <div class="form-group">
-                <label for="name">お名前 <span class="required">*</span></label>
-                <input type="text" id="name" name="name" required placeholder="山田太郎">
+                <label for="name">お名前（漢字） <span class="required">*</span></label>
+                <input type="text" id="name" name="name" required placeholder="例：山田太郎">
+            </div>
+
+            <div class="form-group">
+                <label for="kana">お名前（ひらがな） <span class="required">*</span></label>
+                <input type="text" id="kana" name="kana" required placeholder="例：やまだたろう">
             </div>
 
             <div class="form-group">
                 <label for="affiliation">所属（学類・学位プログラム） <span class="required">*</span></label>
-                <input type="text" id="affiliation" name="affiliation" required placeholder="例：生物学類">
+                <input type="text" id="affiliation" name="affiliation" required placeholder="例：生物資源学類">
             </div>
 
             <div class="form-group">
                 <label for="grade">学年 <span class="required">*</span></label>
-                <select id="grade" name="grade" required>
+                <select id="grade" name="grade" required onchange="toggleGradeOther()">
                     <option value="">選択してください</option>
                     <option value="学類1年生">学類1年生</option>
                     <option value="学類2年生">学類2年生</option>
@@ -69,7 +74,10 @@
                     <option value="学類4年生">学類4年生</option>
                     <option value="修士／博士前期1年生">修士／博士前期1年生</option>
                     <option value="修士／博士前期2年生">修士／博士前期2年生</option>
+                    <option value="その他">その他</option>
                 </select>
+                <input type="text" id="grade_other" name="grade_other" placeholder="学年を入力してください"
+                    style="display: none; margin-top: 8px;">
             </div>
 
             <div class="form-group">
@@ -79,7 +87,7 @@
                     <option value="男性">男性</option>
                     <option value="女性">女性</option>
                     <option value="回答しない">回答しない</option>
-                    <option value="そのほか">そのほか</option>
+                    <option value="その他">その他</option>
                 </select>
             </div>
 

@@ -116,6 +116,21 @@ dateSelect.addEventListener('change', () => {
 // const today = new Date().toISOString().split('T')[0];
 // dateInput.min = today;
 
+// 学年の「その他」表示切り替え
+function toggleGradeOther() {
+    const gradeSelect = document.getElementById('grade');
+    const gradeOtherInput = document.getElementById('grade_other');
+
+    if (gradeSelect.value === 'その他') {
+        gradeOtherInput.style.display = 'block';
+        gradeOtherInput.required = true;
+    } else {
+        gradeOtherInput.style.display = 'none';
+        gradeOtherInput.required = false;
+        gradeOtherInput.value = '';
+    }
+}
+
 // フォーム送信イベント
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -125,11 +140,20 @@ form.addEventListener('submit', async (e) => {
     submitBtn.classList.add('loading');
     submitBtn.textContent = '送信中...';
 
+    // 学年の値を取得
+    const gradeSelect = document.getElementById('grade');
+    const gradeOtherInput = document.getElementById('grade_other');
+    let gradeValue = gradeSelect.value;
+    if (gradeValue === 'その他') {
+        gradeValue = gradeOtherInput.value;
+    }
+
     // フォームデータの取得
     const formData = {
         name: document.getElementById('name').value,
+        kana: document.getElementById('kana').value,
         affiliation: document.getElementById('affiliation').value,
-        grade: document.getElementById('grade').value,
+        grade: gradeValue, // 修正されたgradeValueを使用
         gender: document.getElementById('gender').value,
         age: document.getElementById('age').value,
         handedness: document.getElementById('handedness').value,
