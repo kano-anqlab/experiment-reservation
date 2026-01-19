@@ -11,22 +11,43 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>実験参加予約</h1>
-            <p class="subtitle">ロボット操作に関する実験にご協力いただける方を募集しています</p>
+            <h1>ヒューマノイドロボットの遠隔操作に関する調査</h1>
+            <p class="subtitle">実験参加者応募申込</p>
         </div>
 
         <div class="experiment-info">
-            <h2>実験について</h2>
             <div class="info-content">
-                <p><strong>実験内容：</strong>ヒューマノイドロボットの手を操作していただき、簡単な作業を行っていただきます。</p>
-                <p><strong>所要時間：</strong>約60分</p>
-                <p><strong>謝礼：</strong>クオカード1,000円分</p>
-                <p><strong>実施場所：</strong>〇〇大学 〇〇研究室</p>
+                <p>この研究では、ヒューマノイドロボットの遠隔操作に取り組んでいただき、その際の様子を録音・録画させていただきます。また、ロボットに関するアンケートにご回答いただきます。</p>
+
+                <p><strong>場所:</strong> 生物・農林学系棟B棟で、所要時間は60分を予定しています。</p>
+                <p><strong>謝礼:</strong> 参加していただいた方には、謝礼（Amazonギフト券1,000円分）をお渡しします。</p>
+                <p><strong>ご参加いただける場合は、</strong>以下のフォームに必要事項をご記入の上、参加日時を選択してください。</p>
+                <p>ご協力よろしくお願いします。</p>
+
+                <div class="experiment-image">
+                    <img src="学生募集_WEB.png" alt="実験の様子">
+                </div>
+
+                <div class="notice">
+                    <p>※いただいた個人情報は研究に関する連絡以外の目的で使用しません。</p>
+                    <p>※この研究は筑波大学生命環境系研究倫理委員会の承認を得て、研究参加者の皆様に不利益がないよう万全の注意を払って行われております。参加同意書の提出にかかわらず、いつでも実験参加をやめることを、不利益を被ることなく申し出ることができます。研究の内容に関してご意見ご質問などございましたら、お気軽に研究責任者にお尋ねください。
+                    </p>
+                </div>
+
+                <div class="researcher-info">
+                    <p><strong>【研究責任者】</strong> 筑波大学生命環境系　助教　安久　絵里子（あんきゅう　えりこ）</p>
+                    <p>TEL：029-853-4700　e-mail: ankyu.eriko.fp@un.tsukuba.ac.jp</p>
+                    <p>また、本研究に関して倫理的問題等ございましたら、筑波大学生命環境系研究倫理委員会までご相談下さい。</p>
+                    <p>【生命環境系研究倫理委員会 &lt;seimeirinnri@un.tsukuba.ac.jp&gt;】</p>
+                </div>
             </div>
         </div>
 
         <form id="reservationForm" class="form">
-            <h2 class="form-title">予約フォーム</h2>
+            <div class="form-header">
+                <h2 class="form-title">予約フォーム</h2>
+                <p class="required-note">* 必須の質問です</p>
+            </div>
 
             <div class="form-group">
                 <label for="name">お名前 <span class="required">*</span></label>
@@ -34,34 +55,52 @@
             </div>
 
             <div class="form-group">
-                <label for="email">メールアドレス <span class="required">*</span></label>
-                <input type="email" id="email" name="email" required placeholder="example@email.com">
+                <label for="affiliation">所属（学類・学位プログラム） <span class="required">*</span></label>
+                <input type="text" id="affiliation" name="affiliation" required placeholder="例：生物学類">
             </div>
 
             <div class="form-group">
-                <label for="affiliation">所属 <span class="required">*</span></label>
-                <select id="affiliation" name="affiliation" required>
+                <label for="grade">学年 <span class="required">*</span></label>
+                <select id="grade" name="grade" required>
                     <option value="">選択してください</option>
-                    <option value="文学部">文学部</option>
-                    <option value="教育学部">教育学部</option>
-                    <option value="法学部">法学部</option>
-                    <option value="経済学部">経済学部</option>
-                    <option value="理学部">理学部</option>
-                    <option value="工学部">工学部</option>
-                    <option value="農学部">農学部</option>
-                    <option value="医学部">医学部</option>
-                    <option value="その他">その他</option>
+                    <option value="学類1年生">学類1年生</option>
+                    <option value="学類2年生">学類2年生</option>
+                    <option value="学類3年生">学類3年生</option>
+                    <option value="学類4年生">学類4年生</option>
+                    <option value="修士／博士前期1年生">修士／博士前期1年生</option>
+                    <option value="修士／博士前期2年生">修士／博士前期2年生</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="handedness">利き手 <span class="required">*</span></label>
+                <label for="gender">性別 <span class="required">*</span></label>
+                <select id="gender" name="gender" required>
+                    <option value="">選択してください</option>
+                    <option value="男性">男性</option>
+                    <option value="女性">女性</option>
+                    <option value="回答しない">回答しない</option>
+                    <option value="そのほか">そのほか</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="age">年齢 <span class="required">*</span></label>
+                <input type="number" id="age" name="age" required placeholder="例：20" min="18" max="100">
+            </div>
+
+            <div class="form-group">
+                <label for="handedness">利き手はどちらですか <span class="required">*</span></label>
                 <select id="handedness" name="handedness" required>
                     <option value="">選択してください</option>
-                    <option value="右利き">右利き</option>
-                    <option value="左利き">左利き</option>
-                    <option value="両利き">両利き</option>
+                    <option value="右手">右手</option>
+                    <option value="左手">左手</option>
                 </select>
+            </div>
+
+            <div class="form-group">
+                <label for="email">メールアドレス <span class="required">*</span></label>
+                <p class="help-text">※日程調整のために使用します。連絡が取りやすいメールアドレスを入力してください。</p>
+                <input type="email" id="email" name="email" required placeholder="example@email.com">
             </div>
 
             <div class="form-group">
@@ -91,7 +130,7 @@
             <div class="success-icon">✓</div>
             <h2>予約が完了しました</h2>
             <p>ご登録いただいたメールアドレスに確認メールをお送りしました。</p>
-            <button onclick="resetForm()" class="reset-btn">新しい予約をする</button>
+            <!-- <button onclick="resetForm()" class="reset-btn">新しい予約をする</button> -->
         </div>
 
         <div id="errorMessage" class="error-message hidden">

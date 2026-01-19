@@ -128,9 +128,12 @@ form.addEventListener('submit', async (e) => {
     // フォームデータの取得
     const formData = {
         name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
         affiliation: document.getElementById('affiliation').value,
+        grade: document.getElementById('grade').value,
+        gender: document.getElementById('gender').value,
+        age: document.getElementById('age').value,
         handedness: document.getElementById('handedness').value,
+        email: document.getElementById('email').value,
         date: document.getElementById('date').value,
         time: document.getElementById('time').value,
         notes: document.getElementById('notes').value,
