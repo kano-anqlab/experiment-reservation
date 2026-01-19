@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>実験参加予約システム</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>実験参加予約</h1>
+            <p class="subtitle">ロボット操作に関する実験にご協力いただける方を募集しています</p>
+        </div>
+
+        <div class="experiment-info">
+            <h2>実験について</h2>
+            <div class="info-content">
+                <p><strong>実験内容：</strong>ヒューマノイドロボットの手を操作していただき、簡単な作業を行っていただきます。</p>
+                <p><strong>所要時間：</strong>約60分</p>
+                <p><strong>謝礼：</strong>クオカード1,000円分</p>
+                <p><strong>実施場所：</strong>〇〇大学 〇〇研究室</p>
+            </div>
+        </div>
+
+        <form id="reservationForm" class="form">
+            <h2 class="form-title">予約フォーム</h2>
+
+            <div class="form-group">
+                <label for="name">お名前 <span class="required">*</span></label>
+                <input type="text" id="name" name="name" required placeholder="山田太郎">
+            </div>
+
+            <div class="form-group">
+                <label for="email">メールアドレス <span class="required">*</span></label>
+                <input type="email" id="email" name="email" required placeholder="example@email.com">
+            </div>
+
+            <div class="form-group">
+                <label for="affiliation">所属 <span class="required">*</span></label>
+                <select id="affiliation" name="affiliation" required>
+                    <option value="">選択してください</option>
+                    <option value="文学部">文学部</option>
+                    <option value="教育学部">教育学部</option>
+                    <option value="法学部">法学部</option>
+                    <option value="経済学部">経済学部</option>
+                    <option value="理学部">理学部</option>
+                    <option value="工学部">工学部</option>
+                    <option value="農学部">農学部</option>
+                    <option value="医学部">医学部</option>
+                    <option value="その他">その他</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="handedness">利き手 <span class="required">*</span></label>
+                <select id="handedness" name="handedness" required>
+                    <option value="">選択してください</option>
+                    <option value="右利き">右利き</option>
+                    <option value="左利き">左利き</option>
+                    <option value="両利き">両利き</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="date">希望日 <span class="required">*</span></label>
+                <select id="date" name="date" required>
+                    <option value="">読み込み中...</option>
+                </select>
+                <p class="help-text">空き枠のある日のみ表示されます</p>
+            </div>
+
+            <div class="form-group">
+                <label for="time">希望時間 <span class="required">*</span></label>
+                <select id="time" name="time" required disabled>
+                    <option value="">まず日付を選択してください</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="notes">備考（任意）</label>
+                <textarea id="notes" name="notes" rows="3" placeholder="ご質問やご要望があればご記入ください"></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">予約を確定する</button>
+        </form>
+
+        <div id="successMessage" class="success-message hidden">
+            <div class="success-icon">✓</div>
+            <h2>予約が完了しました</h2>
+            <p>ご登録いただいたメールアドレスに確認メールをお送りしました。</p>
+            <button onclick="resetForm()" class="reset-btn">新しい予約をする</button>
+        </div>
+
+        <div id="errorMessage" class="error-message hidden">
+            <div class="error-icon">✕</div>
+            <h2>エラーが発生しました</h2>
+            <p id="errorText">予約の送信に失敗しました。もう一度お試しください。</p>
+            <button onclick="hideError()" class="reset-btn">戻る</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
