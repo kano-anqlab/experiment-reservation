@@ -105,9 +105,8 @@ body {
 }
 
 .experiment-image img {
-    max-width: 80%;
-    width: 400px;
-    /* HTML側の指定を補助 */
+    max-width: 100%;
+    width: 100%;
     height: auto;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
