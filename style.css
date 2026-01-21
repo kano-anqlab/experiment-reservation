@@ -63,16 +63,17 @@ body {
 }
 
 .subtitle {
-    color: var(--text-secondary);
-    font-size: 18px;
+    color: var(--primary-color);
+    font-size: 20px;
+    font-weight: 700;
 }
 
 .experiment-info {
-    background: var(--bg-light);
-    border-radius: 12px;
-    padding: 24px;
+    background: transparent;
+    border-radius: 0;
+    padding: 0 16px;
     margin-bottom: 32px;
-    border: 1px solid var(--border-color);
+    border: none;
 }
 
 .experiment-info h2 {
@@ -347,26 +348,7 @@ body {
     }
 }
 
-/* Map Styles */
-.map-container {
-    margin: 16px 0;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border: 1px solid var(--border-color);
-}
-
-.map-link {
-    text-align: right;
-    margin-top: 8px;
-    font-size: 14px;
-}
-
-.map-link a {
-    color: var(--primary-color);
-    text-decoration: none;
-    font-weight: 600;
-}
+/* Map Styles were removed */
 
 @media (max-width: 640px) {
     body {
