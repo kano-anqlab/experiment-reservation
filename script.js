@@ -135,6 +135,14 @@ function toggleGradeOther() {
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
+    // 手動でバリデーションチェック
+    if (!form.checkValidity()) {
+        e.stopPropagation();
+        alert('入力に不備があります。必須項目（*マーク）を入力・選択してください。');
+        form.reportValidity(); // ネイティブのバリデーションメッセージも表示
+        return;
+    }
+
     const submitBtn = form.querySelector('.submit-btn');
     submitBtn.disabled = true;
     submitBtn.classList.add('loading');
