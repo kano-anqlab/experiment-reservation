@@ -69,11 +69,11 @@ body {
 }
 
 .experiment-info {
-    background: transparent;
-    border-radius: 0;
-    padding: 0 16px;
+    background: var(--bg-light);
+    border-radius: 12px;
+    padding: 24px;
     margin-bottom: 32px;
-    border: none;
+    border: 1px solid var(--border-color);
 }
 
 .experiment-info h2 {
@@ -366,8 +366,7 @@ body {
 
     .header {
         margin-bottom: 24px;
-        text-align: left;
-        /* Align left for mobile readability */
+        text-align: center;
     }
 
     .header h1 {
@@ -383,16 +382,14 @@ body {
     }
 
     .experiment-info {
-        padding: 0;
+        padding: 20px 16px;
         margin-bottom: 32px;
     }
 
     .info-content p {
         font-size: 16px;
-        /* Ensure readability */
-        line-height: 1.75;
-        /* Improve reading comfort */
-        margin-bottom: 16px;
+        line-height: 1.5;
+        margin-bottom: 12px;
     }
 
     .form-group label {
