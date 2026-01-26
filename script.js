@@ -104,7 +104,20 @@ dateSelect.addEventListener('change', () => {
     times.forEach(time => {
         const option = document.createElement('option');
         option.value = time;
-        option.textContent = time;
+        
+        // 終了時間を計算して表示（所要時間60分）
+        try {
+            const [hours, minutes] = time.split(':').map(Number);
+            const date = new Date();
+            date.setHours(hours, minutes + 60);
+            const endHours = date.getHours().toString().padStart(2, '0');
+            const endMinutes = date.getMinutes().toString().padStart(2, '0');
+            option.textContent = `${time}～${endHours}:${endMinutes}`;
+        } catch (e) {
+            console.error('Time format error:', e);
+            option.textContent = time;
+        }
+
         timeSelect.appendChild(option);
     });
 
