@@ -11,10 +11,18 @@ const timeSelect = document.getElementById('time');
 
 // 空き枠データ
 let availableSlots = {};
+let genderCounts = { male: 0, female: 0 };
+let genderLimits = { male: 8, female: 8 };
 
 // ページ読み込み時に空き枠を取得
 document.addEventListener('DOMContentLoaded', async () => {
     await loadAvailableSlots();
+
+    // 性別選択時のイベントリスナーを追加
+    const genderSelect = document.getElementById('gender');
+    if (genderSelect) {
+        genderSelect.addEventListener('change', checkGenderLimit);
+    }
 });
 
 // 空き枠を取得
@@ -25,6 +33,12 @@ async function loadAvailableSlots() {
         const data = await response.json();
         if (data.success) {
             availableSlots = data.slots;
+            // 定員情報の取得
+            if (data.counts) genderCounts = data.counts;
+            if (data.limits) genderLimits = data.limits;
+
+            // すでに性別が選択されている場合はチェックを実行
+            checkGenderLimit();
         }
 
         populateDateOptions();
@@ -35,30 +49,90 @@ async function loadAvailableSlots() {
     }
 }
 
+// 性別定員のチェック
+function checkGenderLimit() {
+    const genderSelect = document.getElementById('gender');
+    const warningText = document.getElementById('genderWarning');
+    const selectedGender = genderSelect.value;
+
+    if (!warningText) return;
+
+    // リセット
+    warningText.style.display = 'none';
+    warningText.textContent = '';
+
+    if (!selectedGender) return;
+
+    let isFull = false;
+    let limit = 0;
+
+    // 定員情報のログ確認（デバッグ用）
+    console.log('Gender Check:', selectedGender, genderCounts, genderLimits);
+
+    if (selectedGender === '男性') {
+        limit = genderLimits.male || 8;
+        if ((genderCounts.male || 0) >= limit) isFull = true;
+    } else if (selectedGender === '女性') {
+        limit = genderLimits.female || 8;
+        if ((genderCounts.female || 0) >= limit) isFull = true;
+    }
+
+    if (isFull) {
+        warningText.style.display = 'block';
+        warningText.textContent = `※ ${selectedGender}の定員（${limit}名）に達しているため、キャンセル待ちでの受付となります。`;
+    }
+}
+
 // デモ用：ダミーの空き枠データを生成
 function generateDummySlots() {
     const slots = {};
+    // 実験期間
+    const startDate = new Date('2026-02-16');
+    const endDate = new Date('2026-03-06');
     const today = new Date();
-    const times = ['10:00', '11:00', '13:00', '14:00', '15:00', '16:00'];
+    today.setHours(0, 0, 0, 0);
 
-    for (let i = 1; i < 30; i++) {
-        const date = new Date(today);
-        date.setDate(date.getDate() + i);
+    // 時間枠定義
+    const timeSlotsAll = ['09:30', '11:00', '13:00', '14:30'];
+    const timeSlotsYA = ['14:30'];
 
-        // 土日をスキップ
-        const dayOfWeek = date.getDay();
-        if (dayOfWeek === 0 || dayOfWeek === 6) {
+    const currentDate = new Date(startDate);
+
+    while (currentDate <= endDate) {
+        // 過去の日付は（デモ上も）表示しない場合
+        if (currentDate < today) {
+            currentDate.setDate(currentDate.getDate() + 1);
             continue;
         }
 
-        const dateStr = date.toISOString().split('T')[0];
-        // ランダムに空き枠を設定（デモ用）
-        slots[dateStr] = times.filter(() => Math.random() > 0.3);
+        const dateStr = currentDate.toISOString().split('T')[0];
+        const dayOfWeek = currentDate.getDay();
 
-        // 空き枠がない日は削除
-        if (slots[dateStr].length === 0) {
-            delete slots[dateStr];
+        // 土日はスキップ
+        if (dayOfWeek === 0 || dayOfWeek === 6) {
+            currentDate.setDate(currentDate.getDate() + 1);
+            continue;
         }
+
+        // 日付に応じた時間枠
+        let times;
+        if (dateStr === '2026-02-16') {
+            times = [...timeSlotsAll];
+        } else if (dateStr === '2026-02-24') {
+            // 2/24は午後の2枠
+            times = ['13:00', '14:30'];
+        } else {
+            times = [...timeSlotsYA];
+        }
+
+        // デモ用：ランダムに少しだけ埋まっているように見せる（確率20%で枠削除）
+        times = times.filter(() => Math.random() > 0.2);
+
+        if (times.length > 0) {
+            slots[dateStr] = times;
+        }
+
+        currentDate.setDate(currentDate.getDate() + 1);
     }
 
     return slots;
@@ -104,7 +178,7 @@ dateSelect.addEventListener('change', () => {
     times.forEach(time => {
         const option = document.createElement('option');
         option.value = time;
-        
+
         // 終了時間を計算して表示（所要時間60分）
         try {
             const [hours, minutes] = time.split(':').map(Number);
