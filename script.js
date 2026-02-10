@@ -1,5 +1,5 @@
 // Google Apps Script のデプロイURL
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxzLRQxkAZA0klzsfP9uYaZKtgXa553blWvu77gURC4ndqXihqEzNc-4NFvMEzoY4yv/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwX4uKSMLzcOnQRLthF44TQDUhe3k9HhdoHq_7FCsg8dh2vrUOFZMKNSyA6z2L_YrVD/exec';
 
 // フォーム要素の取得
 const form = document.getElementById('reservationForm');
