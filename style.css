@@ -68,6 +68,28 @@ body {
     font-weight: 700;
 }
 
+.important-notice {
+    background: #fff;
+    border: 2px solid var(--error-color);
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 32px;
+    color: var(--text-primary);
+}
+
+.important-notice p {
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.important-notice p:last-child {
+    margin-bottom: 0;
+}
+
+.important-notice strong {
+    color: var(--error-color);
+}
+
 .experiment-info {
     background: var(--bg-light);
     border-radius: 12px;
@@ -379,6 +401,13 @@ body {
         font-size: 18px;
         display: block;
         margin-top: 4px;
+    }
+
+    .important-notice {
+        margin-bottom: 24px;
+        padding: 16px;
+        font-size: 14px;
+        border-width: 1.5px;
     }
 
     .experiment-info {
