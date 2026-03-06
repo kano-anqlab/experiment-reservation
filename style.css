@@ -70,16 +70,18 @@ body {
 
 .important-notice {
     background: #fff;
-    border: 2px solid var(--error-color);
+    border: 3px solid var(--error-color);
     border-radius: 8px;
-    padding: 16px;
+    padding: 24px;
     margin-bottom: 32px;
     color: var(--text-primary);
+    text-align: center;
 }
 
 .important-notice p {
-    margin-bottom: 8px;
+    margin-bottom: 12px;
     line-height: 1.5;
+    font-size: 18px;
 }
 
 .important-notice p:last-child {
@@ -405,9 +407,12 @@ body {
 
     .important-notice {
         margin-bottom: 24px;
-        padding: 16px;
-        font-size: 14px;
-        border-width: 1.5px;
+        padding: 20px;
+        border-width: 2px;
+    }
+
+    .important-notice p {
+        font-size: 16px;
     }
 
     .experiment-info {
