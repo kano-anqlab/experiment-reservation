@@ -81,7 +81,7 @@ body {
 .important-notice p {
     margin-bottom: 12px;
     line-height: 1.5;
-    font-size: 18px;
+    font-size: 24px;
 }
 
 .important-notice p:last-child {
@@ -412,7 +412,7 @@ body {
     }
 
     .important-notice p {
-        font-size: 16px;
+        font-size: 20px;
     }
 
     .experiment-info {
